@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 110vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: gray;
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        .caliculator {
+            
+            padding: 25px;
+            border-radius: 25px;
+            background: linear-gradient(45deg, #c5c5c5, #035ee6);
+            box-shadow: 0px 5px 15px;
+            color: aliceblue;
+        }
+
+        h1 {
+            color: aliceblue;
+        }
+
+        input {
+            width: 200px;
+            border-radius: 8px;
+            padding: 11px;
+            margin: 8px;
+            background: rgba(red, green, blue, alpha);
+            box-shadow: inset 0 2px 5px;
+            font-size: 25px;
+            text-align: right;
+            cursor: pointer;
+            font-weight: 100;
+
+        }
+
+        input::placeholder {
+            color: #ffff;
+        }
+
+        button {
+            border: none;
+            width: 40px;
+            height: 40px;
+            margin: 7px;
+            border-radius: 12px;
+            background: rgba(133, 117, 117, 0.711);
+            color: aliceblue;
+            cursor: pointer;
+            font-weight: bold;
+            opacity: inherit 40px;
+        }
+
+        .eql {
+            background-color: rgb(11, 139, 245);
+            color: rgb(15, 5, 5);
+            font: bolder;
+        }
+
+        .ac {
+            background-color: rgb(129, 240, 240);
+            color: #0c0c0c;
+        }
+
+        .delete {
+            background-color: rgb(240, 101, 101);
+            color: #0c0c0c;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="caliculator">
+
+            <h1>CALCULATER</h1>
+            <div class="wrapper">
+                <div class="input-cal">
+                    <input type="text" id="inputText" placeholder="0">
+                </div>
+                <div class="btn">
+                    <button onclick="clearDisplay('AC')" class="ac">AC</button>
+                    <button onclick="del('DEL')" class="delete">DEL</button>
+                    <button onclick="appendToDisplay('8')" class="btn-class">%</button>
+                    <button onclick="appendToDisplay('/')" class="btn-class">/</button>
+                </div>
+                <div>
+                    <button onclick="appendToDisplay('7')" class="btn-class">7</button>
+                    <button onclick="appendToDisplay('8')" class="btn-class">8</button>
+                    <button onclick="appendToDisplay('9')" class="btn-class">9</button>
+                    <button onclick="appendToDisplay('*')" class="btn-class">x</button>
+                </div>
+                <div>
+                    <button onclick="appendToDisplay('4')" class="btn-class">4</button>
+                    <button onclick="appendToDisplay('5')" class="btn-class">5</button>
+                    <button onclick="appendToDisplay('6')" class="btn-class">6</button>
+                    <button onclick="appendToDisplay('-')" class="btn-class">-</button>
+                </div>
+                <div>
+                    <button onclick="appendToDisplay('1')" class="btn-class">1</button>
+                    <button onclick="appendToDisplay('2')" class="btn-class">2</button>
+                    <button onclick="appendToDisplay('3')" class="btn-class">3</button>
+                    <button onclick="appendToDisplay('+')" class="btn-class">+</button>
+                </div>
+                <div>
+                    <button onclick="appendToDisplay('00')" class="btn-class">00</button>
+                    <button onclick="appendToDisplay('0')" class="btn-class">0</button>
+                    <button onclick="appendToDisplay('.')" class="btn-class">.</button>
+                    <button onclick="calculate()" class="eql">=</button>
+                </div>
+
+
+            </div>
+        </div>
+        <script>
+            const display = document.getElementById('inputText');
+
+            function appendToDisplay(input) {
+                display.value += input;
+            }
+            function clearDisplay() {
+                display.value = '';
+            }
+            function del() {
+                display.value = display.value.slice(0, -1);
+            }
+            function calculate() {
+                try {
+                    display.value = eval(display.value);
+                }
+                catch (e) {
+                    display.value = 'Error';
+
+                }
+            }
+
+        </script>
+</body>
+
+</html>
